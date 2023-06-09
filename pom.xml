@@ -1960,6 +1960,42 @@
         </profile>
 
         <profile>
+            <id>docker-payara</id>
+            <properties>
+                <skip.unit.tests>true</skip.unit.tests>
+                <skip.integration.tests>true</skip.integration.tests>
+            </properties>
+            <build>
+                <finalName>petclinic</finalName>
+                <defaultGoal>clean install</defaultGoal>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.dkanejs.maven.plugins</groupId>
+                            <artifactId>docker-compose-maven-plugin</artifactId>
+                            <version>${version.docker-compose-maven-plugin}</version>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>com.dkanejs.maven.plugins</groupId>
+                        <artifactId>docker-compose-maven-plugin</artifactId>
+                        <configuration>
+                            <composeFile>${project.basedir}/src/main/runtimes/payara/docker/docker-compose.yml
+                            </composeFile>
+                            <verbose>true</verbose>
+                            <removeImages>true</removeImages>
+                            <removeVolumes>true</removeVolumes>
+                            <ignorePullFailures>true</ignorePullFailures>
+                            <detachedMode>true</detachedMode>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
             <id>liberty</id>
             <activation>
                 <activeByDefault>true</activeByDefault>

@@ -19,4 +19,4 @@ services:
     image: adminer:latest
     restart: always
     ports:
-      - 8080:4000
+      - 8081:4000
